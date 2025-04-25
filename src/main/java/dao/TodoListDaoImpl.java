@@ -12,7 +12,7 @@ import model.entity.Todo;
 public class TodoListDaoImpl extends BaseDao implements TodoListDao {
 
 	@Override
-	public List<Todo> findAllTOdos() {
+	public List<Todo> findAllTodos() {
 		List<Todo>todos=new ArrayList<>();
 		String sql="select id,text,completed from todo order by id";
 		try(Statement stmt=conn.createStatement();
@@ -54,14 +54,14 @@ public class TodoListDaoImpl extends BaseDao implements TodoListDao {
 
 	@Override
 	public void addTodo(Todo todo) {
-		String sql="insert into todo(text,completed)value(?,?)";
+		String sql="insert into todo(text,completed)values(?,?)";
 		try(PreparedStatement pstmt=conn.prepareStatement(sql)){
 			pstmt.setString(1, todo.getText());
 			pstmt.setBoolean(2, todo.getCompleted());
 			int rowcount=pstmt.executeUpdate();
 			System.out.println("新增todo筆數"+rowcount);
 		}catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 	}

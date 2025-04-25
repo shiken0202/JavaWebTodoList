@@ -7,7 +7,7 @@ import model.entity.Todo;
 public interface TodoListDao {
 
 	//1.查詢所有 Todo 資料
-	List<Todo> findAllTOdos();
+	List<Todo> findAllTodos();
 	//2.查詢單筆 Todo 資料
 	Todo getTodo(Integer id);
 	//3.新增	 Todo 資料
